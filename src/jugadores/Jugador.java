@@ -12,9 +12,9 @@ package jugadores;
 public class Jugador {
     
         //ATRIBUTOS = VARIABLES = DATOS
-        private int numeroCamiseta, id, edad;
-        private String nombre, apellidos, posicion, equipoJugador;     
-                
+        private int id;
+        private String nombre, apellidos, posicion, equipoJugador,numeroCamiseta, edad; 
+                               
         //METODO=ACCION=FUNCION ESPECIAL=CONSTRUCTOR
     
         public Jugador() {
@@ -22,12 +22,16 @@ public class Jugador {
     
         //METODOS=ACCIONES=FUNCIONES
 
-    public int getNumeroCamiseta() {
+    public String getNumeroCamiseta() {
         return numeroCamiseta;
     }
 
-    public void setNumeroCamiseta(int numeroCamiseta) {
-        this.numeroCamiseta = numeroCamiseta;
+    public void setNumeroCamiseta(String numeroCamiseta) {
+        if(numeroCamiseta.matches("^[0-9]*$")){
+            this.numeroCamiseta = numeroCamiseta;
+        }else {
+            System.out.println("El dorsal solo admite números");
+	}
     }
 
     public int getId() {
@@ -38,20 +42,28 @@ public class Jugador {
         this.id = id;
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setEdad(String edad) {
+        if(edad.matches("^[0-9]*$")){
+            this.edad = edad;
+        } else {
+            System.out.println("La edad solo admite números");
+	}        
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String nombre) { 
+    	if(nombre.matches("^[a-zA-Z ]*$")){
+            this.nombre = nombre;
+	} else {
+            System.out.println("El/los nombre(s) solo admite letras");
+	}            
     }
 
     public String getApellidos() {
@@ -59,7 +71,12 @@ public class Jugador {
     }
 
     public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+        if(apellidos.matches("^[a-zA-Z ]*$")){
+            this.apellidos = apellidos;
+        }else {
+            System.out.println("El/los apellido(s) solo admiten letas");
+	}
+        
     }
 
     public String getPosicion() {
@@ -67,7 +84,11 @@ public class Jugador {
     }
 
     public void setPosicion(String posicion) {
-        this.posicion = posicion;
+        if(posicion.matches("^[a-zA-Z ]*$")){      
+            this.posicion = posicion;
+        }else {
+            System.out.println("La posición solo admite letas");
+	}
     }
 
     public String getEquipoJugador() {
@@ -75,7 +96,11 @@ public class Jugador {
     }
 
     public void setEquipoJugador(String equipoJugador) {
-        this.equipoJugador = equipoJugador;
+        if(equipoJugador.matches("^[a-zA-Z ]*$")){
+            this.equipoJugador = equipoJugador;
+        }else {
+            System.out.println("El equipo solo admite letas");
+	}
     }
         
         

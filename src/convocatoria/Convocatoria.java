@@ -10,23 +10,23 @@ import jugadores.Jugador;
 
 /**
  *
- * @author Jose
+ * @author Jose and Sebas
  */
 public class Convocatoria {
 
     /**
      * @param args the command line arguments
      */
+    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
         
-        Scanner entrada = new Scanner(System.in);
+        Scanner entrada = new Scanner(System.in).useDelimiter("\n");
         int opcion, contador = 0;
         Jugador[] jugadores = new Jugador[23];
         do{
             
             System.out.println("Bienvenido a la convocatoria de la Selección Colombia");
             System.out.println("******************************************************");
-            
             System.out.println("1. Agregar jugador");
             System.out.println("2. Buscar jugador");
             System.out.println("3. Editar jugador");
@@ -45,29 +45,41 @@ public class Convocatoria {
                     jugadores[contador]=new Jugador();
                     
                     jugadores[contador].setId(contador);
+                                      
+                    do{
+                        System.out.println("Digite el/los nombre(s): ");
+                        jugadores[contador].setNombre(entrada.next());
+                    }while(jugadores[contador].getNombre()==null || jugadores[contador].getNombre().equals(""));
                     
-                    System.out.println("Digite el nombre: ");
-                    jugadores[contador].setNombre(entrada.next());
+                    do{
+                        System.out.println("Digite los apellidos: ");
+                        jugadores[contador].setApellidos(entrada.next());
+                    }while(jugadores[contador].getApellidos()==null || jugadores[contador].getApellidos().equals(""));
                     
-                    System.out.println("Digite los apellidos: ");
-                    jugadores[contador].setApellidos(entrada.next());
+                    do{ 
+                        System.out.println("Digite el dorsal: ");
+                        jugadores[contador].setNumeroCamiseta(entrada.next());                                   
+                    }while(jugadores[contador].getNumeroCamiseta()==null || jugadores[contador].getNumeroCamiseta().equals(""));
                     
-                    System.out.println("Digite el dorsal: ");
-                    jugadores[contador].setNumeroCamiseta(entrada.nextInt());
+                    do{
+                        System.out.println("Digite la posición: ");
+                        jugadores[contador].setPosicion(entrada.next());
+                    }while(jugadores[contador].getPosicion()==null || jugadores[contador].getPosicion().equals(""));
                     
-                    System.out.println("Digite la posición: ");
-                    jugadores[contador].setPosicion(entrada.next());
+                    do{
+                        System.out.println("Digite la edad: ");
+                        jugadores[contador].setEdad(entrada.next());
+                    }while(jugadores[contador].getEdad()==null || jugadores[contador].getEdad().equals(""));
                     
-                    System.out.println("Digite la edad: ");
-                    jugadores[contador].setEdad(entrada.nextInt());
+                    do{
+                        System.out.println("Digite el equipo donde juega: ");
+                        jugadores[contador].setEquipoJugador(entrada.next());
+                    }while(jugadores[contador].getEquipoJugador()==null || jugadores[contador].getEquipoJugador().equals(""));
                     
-                    System.out.println("Digite el equipo donde juega: ");
-                    jugadores[contador].setEquipoJugador(entrada.next());
-                                                          
                     contador++;
                     
                     break;
-                    
+                   
                 case 2:
                     
                     System.out.println("Digite el dorsal del jugador:");
@@ -75,7 +87,7 @@ public class Convocatoria {
                     int contadoruno=0;
                     for(int i=0; i<contador; i++){
                     
-                        if(dorsal == jugadores[i].getNumeroCamiseta()){
+                        if(dorsal == Integer.parseInt(jugadores[i].getNumeroCamiseta())){
                             
                         System.out.println("Id: "+jugadores[i].getId());
                         System.out.println("Nombre: "+jugadores[i].getNombre());
@@ -106,23 +118,41 @@ public class Convocatoria {
                     
                         if(id == jugadores[i].getId()){
                             
-                            System.out.println("Digite el nombre: ");
-                            jugadores[i].setNombre(entrada.next());
+                                do{
+                                    jugadores[i].setNombre("");
+                                    System.out.println("Digite el/los nombre(s): ");
+                                    jugadores[i].setNombre(entrada.next());
+                                }while(jugadores[i].getNombre()==null || jugadores[i].getNombre().equals(""));
 
-                            System.out.println("Digite los apellidos: ");
-                            jugadores[i].setApellidos(entrada.next());
+                                do{
+                                    jugadores[i].setApellidos("");
+                                    System.out.println("Digite los apellidos: ");
+                                    jugadores[i].setApellidos(entrada.next());
+                                }while(jugadores[i].getApellidos()==null || jugadores[i].getApellidos().equals(""));
 
-                            System.out.println("Digite el dorsal: ");
-                            jugadores[i].setNumeroCamiseta(entrada.nextInt());
+                                do{ 
+                                    jugadores[i].setNumeroCamiseta("");
+                                    System.out.println("Digite el dorsal: ");
+                                    jugadores[i].setNumeroCamiseta(entrada.next());                                   
+                                }while(jugadores[i].getNumeroCamiseta()==null || jugadores[i].getNumeroCamiseta().equals(""));
 
-                            System.out.println("Digite la posición: ");
-                            jugadores[i].setPosicion(entrada.next());
+                                do{
+                                    jugadores[i].setPosicion("");
+                                    System.out.println("Digite la posición: ");
+                                    jugadores[i].setPosicion(entrada.next());
+                                }while(jugadores[i].getPosicion()==null || jugadores[i].getPosicion().equals(""));
 
-                            System.out.println("Digite la edad: ");
-                            jugadores[i].setEdad(entrada.nextInt());
+                                do{
+                                    jugadores[i].setEdad("");
+                                    System.out.println("Digite la edad: ");
+                                    jugadores[i].setEdad(entrada.next());
+                                }while(jugadores[i].getEdad()==null || jugadores[i].getEdad().equals(""));
 
-                            System.out.println("Digite el equipo donde juega: ");
-                            jugadores[i].setEquipoJugador(entrada.next());
+                                do{
+                                    jugadores[i].setEquipoJugador("");
+                                    System.out.println("Digite el equipo donde juega: ");
+                                    jugadores[i].setEquipoJugador(entrada.next());
+                                }while(jugadores[i].getEquipoJugador()==null || jugadores[i].getEquipoJugador().equals(""));
                             
                             break;
                         
@@ -130,7 +160,7 @@ public class Convocatoria {
                           contadordos++;                                             
                     }
                     if(contadordos==contador){
-                    System.out.println("Ningún jugador convocado posee este id");
+                        System.out.println("Ningún jugador convocado posee este id");
                     }
                     break;        
                     
@@ -140,6 +170,7 @@ public class Convocatoria {
                     System.out.println("");
                     
                     for(int i=0; i<contador; i++){
+                        
                         
                         System.out.println("Id: "+jugadores[i].getId());
                         System.out.println("Nombre: "+jugadores[i].getNombre());
